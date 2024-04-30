@@ -1,0 +1,29 @@
+#Tyran Murphy
+#4/30/2024
+#P3LAB 
+#total change
+
+
+
+# Get the total change amount from the user
+total_change = int(input())
+
+# Dictionary mapping the coin values to their names
+coin_values = {
+    100: "Dollar",
+    25: "Quarter",
+    10: "Dime",
+    5: "Nickel",
+    1: "Penny"
+}
+
+# Check if there is any change to be provided
+if total_change <= 0:
+    print("No change")
+else:
+    # Calculate the fewest coins needed for the change
+    for value, name in coin_values.items():
+        if total_change // value > 0:
+            num_coins = total_change // value
+            total_change %= value
+            print(f"{num_coins} {name}{'s' if num_coins != 1 else ''}")
