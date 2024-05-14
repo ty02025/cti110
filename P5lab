@@ -1,0 +1,54 @@
+#Tyran Murphy
+#5/9
+#P5Lab
+#money calculator
+import random
+def disperse_change(change):
+ dollars = int(change)
+ change = round(change - dollars, 2)
+ quarters = int(change / 0.25)
+ change = round(change - quarters * 0.25, 2)
+ dimes = int(change / 0.1)
+ change = round(change - dimes * 0.1, 2)
+ nickels = int(change / 0.05)
+ change = round(change - nickels * 0.05, 2)
+ pennies = int(round(change * 100))
+ if dollars > 0:
+ print("{} dollar{}".format(dollars, "s" if dollars > 1 else ""))
+ if quarters > 0:
+ print("{} quarters".format(quarters))
+ if dimes > 0:
+ print("{} dimes".format(dimes))
+ if nickels > 0:
+ print("{} nickels".format(nickels))
+ if pennies > 0:
+ print("{} pennies".format(pennies))
+ else:
+ if quarters > 0:
+ print("0 dollar{} {} quarters".format("s" if dollars < 0 else "", quarters))
+ else:
+ print("0 dollars")
+ if dimes > 0:
+ print(" {} dimes".format(dimes))
+ else:
+ print(" ")
+ if nickels > 0:
+ print(" {} nickels".format(nickels))
+ else:
+ print(" ")
+ if pennies > 0:
+ print(" {} pennies".format(pennies))
+ else:
+ print(" ")
+def main():
+ import random
+ amount_owed = round(random.uniform(0.01, 100.00), 2)
+ print("You owe: ${:.2f}".format(amount_owed))
+ cash_entered = float(input("Enter the amount of cash you will put into the self-checkout: "))
+ change = cash_entered - amount_owed
+ if change < 0:
+ print("You need to pay more")
+ else:
+ disperse_change(change)
+if __name__ == "__main__":
+ main()
